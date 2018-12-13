@@ -244,7 +244,7 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `DisplayDBNullAsNull(bool value)` | Format DBNull.Value as 'null' value. True by default. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
+| `DisplayDBNullAsNull(bool value)` | Format DBNull.Value as 'null' value. True by default. | [Try it](https://dotnetfiddle.net/8dawtN) |
 | `DisplayFormatValue<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, object, object> formatter)` | Formats value for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
 | `DisplayNameEntity<TEntityType>(Func<TEntityType, string, string>)` formatter | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
 | `DisplayNameProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, string, string> formatter)` | Formats property name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
@@ -253,9 +253,9 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `ExcludeEntity()` | Excludes from the audit all entities. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
-| `ExcludeEntity<TEntityType>()` | Excludes from the audit all entities of type 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `ExcludeEntity(Func<object, bool> predicate)` | Excludes from the audit all entities which satisfy the predicate. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
+| `ExcludeEntity()` | Excludes from the audit all entities. | [Try it](https://dotnetfiddle.net/MrWtV4) |
+| `ExcludeEntity<TEntityType>()` | Excludes from the audit all entities of type 'TEntityType' type. | [Try it](https://dotnetfiddle.net/Nes7be) |
+| `ExcludeEntity(Func<object, bool> predicate)` | Excludes from the audit all entities which satisfy the predicate. | [Try it](https://dotnetfiddle.net/tWTkaC)  |
 | `ExcludeEntity(AuditEntryState entryState)` | Excludes from the audit all entities for the specified entry state. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
 | `ExcludeEntity<TEntityType>(AuditEntryState entryState)` | Excludes from the audit all entities of type 'TEntityType' type for the specified entry state. | [Try it**](https://dotnetfiddle.net/2IBfGq) |
 | `ExcludeEntity(Func<object, bool> predicate, AuditEntryState entryState)` | Excludes from the audit all entities which satisfy the predicate for the specified entry state. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
@@ -265,8 +265,8 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 | `ExcludePropertyUnchanged()` | Excludes from the audit all properties unchanged. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/2IBfGq) |
 | `ExcludePropertyUnchanged(Func<object, bool> predicate)` | Excludes from the audit all properties unchanged from entities of type 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
 | `ExcludePropertyUnchanged<TEntityType>()` | Excludes from the audit all properties unchanged which satisfy the predicate. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `IncludeEntity()` | Includes in the the audit all entities. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
-| `IncludeEntity<TEntityType>()` | Includes in the audit all entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
+| `IncludeEntity()` | Includes in the the audit all entities. | [Try it](https://dotnetfiddle.net/r0Rq73) |
+| `IncludeEntity<TEntityType>()` | Includes in the audit all entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/rjhUQb) |
 | `IncludeEntity(Func<object, bool> predicate)` | Includes in the audit all entities which satisfy the predicate. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
 | `IncludeEntity(entryState)` | Includes in the the audit all entities for the specified entry state. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
 | `IncludeEntity<TEntityType>(AuditEntryState entryState)` | Includes in the audit all entities of 'TEntityType' for the specified entry state. | [Try it**](https://dotnetfiddle.net/2IBfGq) |
