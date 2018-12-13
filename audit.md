@@ -60,7 +60,7 @@ You can have the **Audit** feature always activated by enabling it in your conte
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/7cKY2x)
+[Try it](https://dotnetfiddle.net/gmlMIz)
 
 #### On Demand enabled
 You can activate the **Audit** feature on demand by enabling it after the context is created.
@@ -68,7 +68,7 @@ You can activate the **Audit** feature on demand by enabling it after the contex
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/qjRFbZ)
+[Try it](https://dotnetfiddle.net/ewsolr)
 
 ### AutoSave Set
 To automatically save changes in your database, you need to specify the set in which audit entries will be added then saved.
@@ -76,7 +76,7 @@ To automatically save changes in your database, you need to specify the set in w
 One of those following set must be added to your context:
 - `DbSet<AuditEntry>` (Best for viewing, worse for insert)
 - `DbSet<XmlAuditEntry>`
-- `DbSet<JsonAuditEntryJson>`
+- `DbSet<JsonAuditEntry>`
 - `DbSet<IAuditEntry>` (or a class that inherit from `IAuditEntry`)
 
 ```csharp
@@ -134,7 +134,7 @@ This format is very useful when looking at your properties but **NOT RECOMMENDED
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/tctGi0)
+[Try it](https://dotnetfiddle.net/lQIzmq)
 
 ### Save properties as XML
 The `XmlAuditEntry` class allow you to save your properties in an XML format.
@@ -142,7 +142,7 @@ The `XmlAuditEntry` class allow you to save your properties in an XML format.
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/tctGi0)
+[Try it](https://dotnetfiddle.net/cLLDW7)
 
 ### Save properties as Json
 The `JsonAuditEntry` class allow you to save your properties in a Json format.
@@ -150,7 +150,7 @@ The `JsonAuditEntry` class allow you to save your properties in a Json format.
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/tctGi0)
+[Try it](https://dotnetfiddle.net/AZqGdO)
 
 ### Save custom audit
 The `IAuditEntry` interface allows creating a custom audit class by inheriting from the interface. Properties are populated by reflection when the name matches ones that are supported. 
@@ -160,7 +160,7 @@ See [supported properties name](#iauditentry).
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/tctGi0)
+[Try it](https://dotnetfiddle.net/lVIW2I)
 
 ## Real Life Scenarios
 
@@ -235,10 +235,10 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 
 | Name | Description | Default | Example |
 | :--- | :---------- | :-----: | :------ |
-| `IsEnabled` | Gets or sets if the `Audit` feature is enabled. By default, this feature is disabled to not impact the performance. | `false` | [Try it**](https://dotnetfiddle.net/ykhwxO) |
-| `AutoSaveAction` | Gets or sets the `AutoSaveAction`. This option is usually used to save audit log in a file or different context. | `null` | [Try it**](https://dotnetfiddle.net/ykhwxO) |
-| `AutoSaveSet` | Gets or sets the `AutoSaveSet`. This option is usually used to auto save audit log in a database. | `null` | [Try it**](https://dotnetfiddle.net/ykhwxO) |
-| `LastAudit` | Gets the last `Audit` log. This option give you all audit information after a save is performed. | `null` | [Try it**](https://dotnetfiddle.net/ykhwxO) |
+| `IsEnabled` | Gets or sets if the `Audit` feature is enabled. By default, this feature is disabled to not impact the performance. | `false` | [Try it](https://dotnetfiddle.net/4xrM1d) |
+| `AutoSaveAction` | Gets or sets the `AutoSaveAction`. This option is usually used to save audit log in a file or different context. | `null` | [Try it](https://dotnetfiddle.net/YzYyE7) |
+| `AutoSaveSet` | Gets or sets the `AutoSaveSet`. This option is usually used to auto save audit log in a database. | `null` | [Try it](https://dotnetfiddle.net/hXzGVu) |
+| `LastAudit` | Gets the last `Audit` log. This option give you all audit information after a save is performed. | `null` | [Try it](https://dotnetfiddle.net/8ce2Y1) |
 
 ###### Methods (Display)
 
