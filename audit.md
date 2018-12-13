@@ -282,8 +282,8 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `SoftDeleted(Func<object, bool> predicate)` | Change the AuditEntryState from "EntityModified' to "EntitySoftDeleted" for all entities which satisfy the soft delete predicate. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
-| `SoftDeleted<TEntityType>(Func<TEntityType, bool> predicate)` | Change the AuditEntryState from "EntityModified" to "EntitySoftDeleted" for all entities of 'TEntityType' type and which satisfy the soft delete predicate. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
+| `SoftDeleted(Func<object, bool> predicate)` | Change the AuditEntryState from "EntityModified' to "EntitySoftDeleted" for all entities which satisfy the soft delete predicate. | [Try it](https://dotnetfiddle.net/k1h8fr) |
+| `SoftDeleted<TEntityType>(Func<TEntityType, bool> predicate)` | Change the AuditEntryState from "EntityModified" to "EntitySoftDeleted" for all entities of 'TEntityType' type and which satisfy the soft delete predicate. | [Try it](https://dotnetfiddle.net/OdVFGF) |
 
 ### Audit
 
