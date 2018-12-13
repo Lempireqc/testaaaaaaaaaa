@@ -75,14 +75,14 @@ To automatically save changes in your database, you need to specify the set in w
 
 One of those following set must be added to your context:
 - `DbSet<AuditEntry>` (Best for viewing, worse for insert)
-- `DbSet<JsonAuditEntryJson>`
 - `DbSet<XmlAuditEntry>`
+- `DbSet<JsonAuditEntryJson>`
 - `DbSet<IAuditEntry>` (or a class that inherit from `IAuditEntry`)
 
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/tctGi0)
+[Try it](https://dotnetfiddle.net/2HLtF4)
 
 ### AutoSave Action
 To automatically save changes in another context or a file, you need to specify an AutoSaveAction that will always be executed after a save is completed.
