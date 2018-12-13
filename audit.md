@@ -434,8 +434,8 @@ For example, if the `class` that inherit from `IAuditEntry` has a property named
 | `StateName` | Gets or sets the `AuditEntryState` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
 | `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it**](https://dotnetfiddle.net/28AdvH) |
 | `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `PropertiesJson` | Gets or sets audit properties formatted as `Json`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `PropertiesXml` | Gets or sets audit properties formatted as `Xml`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `JsonProperties` | Gets or sets audit properties formatted as `Json`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `XmlProperties` | Gets or sets audit properties formatted as `Xml`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
 
 ## Limitations
 
