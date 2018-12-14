@@ -375,14 +375,14 @@ The `JsonAuditEntry` class contains information about the `AuditEntry` and all p
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `JsonAuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it**](https://dotnetfiddle.net/DP6Del) |
-| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `State` | Gets or sets the `AuditEntryState`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `PropertiesJson` | Gets or sets audit properties formatted as `Json`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `JsonAuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/KNnZ7i) |
+| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it](https://dotnetfiddle.net/u7BXwl) |
+| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it](https://dotnetfiddle.net/iVGV38) |
+| `State` | Gets or sets the `AuditEntryState`. | [Try it](https://dotnetfiddle.net/5Y7rqE) |
+| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it](https://dotnetfiddle.net/Gzu8f0) |
+| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it](https://dotnetfiddle.net/en1Sd1) |
+| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it](https://dotnetfiddle.net/q9GA7E) |
+| `JsonProperties` | Gets or sets audit properties formatted as `Json`. | [Try it](https://dotnetfiddle.net/YMiRH6) |
 
 <details>
   <summary>Database First SQL</summary>
@@ -400,14 +400,14 @@ The `XmlAuditEntry` class contains information about the `AuditEntry` and all pr
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `XmlAuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it**](https://dotnetfiddle.net/DP6Del) |
-| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `State` | Gets or sets the `AuditEntryState`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `PropertiesXml` | Gets or sets audit properties formatted as `Xml`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `XmlAuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/ohl81V) |
+| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it](https://dotnetfiddle.net/r1sti8) |
+| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it](https://dotnetfiddle.net/InPE7m) |
+| `State` | Gets or sets the `AuditEntryState`. | [Try it](https://dotnetfiddle.net/yl2ESG) |
+| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it](https://dotnetfiddle.net/Gok4r5) |
+| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it](https://dotnetfiddle.net/SooSeu) |
+| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it](https://dotnetfiddle.net/LT6aSE) |
+| `XmlProperties` | Gets or sets audit properties formatted as `Xml`. | [Try it](https://dotnetfiddle.net/Dcldvf) |
 
 <details>
   <summary>Database First SQL</summary>
