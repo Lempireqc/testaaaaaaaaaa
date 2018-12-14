@@ -314,11 +314,11 @@ The `AuditEntry` class contains information about the entry and a list of `Audit
 | `AuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/bn3OpH) |
 | `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it](https://dotnetfiddle.net/wEjMFB) |
 | `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it](https://dotnetfiddle.net/Ulretn) |
-| `State` | Gets or sets the `AuditEntryState`. | [Try it**](https://dotnetfiddle.net/nyBz4f) |
-| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `Properties` | Gets or sets the `AuditEntry` properties. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `State` | Gets or sets the `AuditEntryState`. | [Try it](https://dotnetfiddle.net/hitoCH) |
+| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it](https://dotnetfiddle.net/hzefDr) |
+| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it](https://dotnetfiddle.net/JjBEqS) |
+| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it](https://dotnetfiddle.net/XG8s4n) |
+| `Properties` | Gets or sets the `AuditEntry` properties. | [Try it](https://dotnetfiddle.net/FYsJgt) |
 
 ###### Properties (Unmapped)
 
