@@ -356,8 +356,8 @@ The `AuditEntryProperty` contains information about `property`.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `OldValueRaw` | Gets or sets the old raw value. This is the original raw value without being formatted. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `NewValueRaw` | Gets or sets the new raw value. This is the original raw value without being formatted. | [Try it**](https://dotnetfiddle.net/DP6Del) |
+| `OldValueRaw` | Gets or sets the old raw value. This is the original raw value without being formatted. | [Try it](https://dotnetfiddle.net/cxK2Hq) |
+| `NewValueRaw` | Gets or sets the new raw value. This is the original raw value without being formatted. | [Try it](https://dotnetfiddle.net/zetqj9) |
 
 <details>
   <summary>Database First SQL</summary>
