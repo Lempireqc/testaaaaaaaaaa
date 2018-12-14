@@ -344,13 +344,13 @@ The `AuditEntryProperty` contains information about `property`.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `ParentAuditEntry` | Gets or sets the parent `AuditEntry`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `AuditEntryPropertyID` | Gets or sets the `AuditEntryPropertyID`. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `AuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it**](https://dotnetfiddle.net/DP6Del) |
-| `RelationName` | Gets or sets the relation name. Only available for `RelationshipAdded` and `RelationshipDeleted` state | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `PropertyName` | Gets or sets the property name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `OldValue` | Gets or sets the old value formatted as string. Avalable for `Modified`, `Deleted`, and `RelationshipDeleted` state. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `NewValue` | Gets or sets the new value formatted as string. Avalable for `Insert`, `Modified`, and `RelationshipModified` state. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `Parent` | Gets or sets the parent `AuditEntry`. | [Try it](https://dotnetfiddle.net/WXpAtA) |
+| `AuditEntryPropertyID` | Gets or sets the `AuditEntryPropertyID`. | [Try it](https://dotnetfiddle.net/C8GBWu) |
+| `AuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/kJzQ6i) |
+| `RelationName` | Gets or sets the relation name. Only available for `RelationshipAdded` and `RelationshipDeleted` state | [Try it](https://dotnetfiddle.net/LTd809) |
+| `PropertyName` | Gets or sets the property name. | [Try it](https://dotnetfiddle.net/oYqqV0) |
+| `OldValue` | Gets or sets the old value formatted as string. Avalable for `Modified`, `Deleted`, and `RelationshipDeleted` state. | [Try it](https://dotnetfiddle.net/hNUCx6) |
+| `NewValue` | Gets or sets the new value formatted as string. Avalable for `Insert`, `Modified`, and `RelationshipModified` state. | [Try it](https://dotnetfiddle.net/lrGw9a) |
 
 ###### Properties (Unmapped)
 
