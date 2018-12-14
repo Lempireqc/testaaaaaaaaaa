@@ -293,10 +293,10 @@ The `Audit` class provide information about the audit trail.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Entries` | Gets or sets the audit entries. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `JsonEntries` | Gets the audit entries with properties as Json. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `XmlEntries` | Gets the audit entries with properties as Xml. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `Manager` | Gets the audit manager. | [Try it**](https://dotnetfiddle.net/DP6Del) |
+| `Entries` | Gets or sets the audit entries. | [Try it](https://dotnetfiddle.net/In5zMB) |
+| `EntriesJson` | Gets the audit entries with properties as Json. | [Try it](https://dotnetfiddle.net/1Pt2Ny) |
+| `EntriesXml` | Gets the audit entries with properties as Xml. | [Try it](https://dotnetfiddle.net/9WKMvp) |
+| `Manager` | Gets the audit manager. | [Try it](https://dotnetfiddle.net/LVU9UD) |
 
 ###### Methods
 | Name | Description | Example |
