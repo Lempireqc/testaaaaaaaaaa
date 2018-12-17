@@ -163,7 +163,7 @@ One of those following set must be added to your context:
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `AuditEntry` | The `AuditEntry` class allow you to save one row per property (Only recommand for `Enterprise` version). The `DbSet<AuditEntry>` and `DbSet<AuditEntryProperty>` must be added to your context. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `AuditEntry` | The `AuditEntry` class allow you to save one row per property (Only recommand for `Enterprise` version). The `DbSet<AuditEntry>` and `DbSet<AuditEntryProperty>` must be added to your context. | [Try it](https://dotnetfiddle.net/cg2SVF) |
 | `XmlAuditEntry` | The `XmlAuditEntry` class allow you to save your properties in an XML format. The `DbSet<XmlAuditEntry>` must be added to your context. | [Try it](https://dotnetfiddle.net/2HLtF4) |
 
 ### AutoSave Action
@@ -388,7 +388,7 @@ This properties values are only accessible via the `LastAudit` property.
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `ParentAudit` | Gets or sets the parent `Audit`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `Parent` | Gets or sets the parent `Audit`. | [Try it](https://dotnetfiddle.net/BwOXVR) |
 | `Entity` | Gets or sets the audited `Entity`. | [Try it](https://dotnetfiddle.net/4QeyV2) |
 | `Entry` | Gets or sets the audited `ObjectStateEntry`.  | [Try it](https://dotnetfiddle.net/zvfkd3) |
 
@@ -482,7 +482,7 @@ Coming soon...
 | `Where<TEntityType>(this DbSet<AuditEntry> set, params object[] keyValues)` | Gets the audit trail of the specific key. | [Try it](https://dotnetfiddle.net/dbtkiu) |
 | `Where<TEntityType>(this DbSet<XmlAuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it](https://dotnetfiddle.net/zIwUYc) |
 | `ToLog(this AuditEntry entry)` | Returns a string representation of the audit that can be easily saved in a log file. | [Try it**](https://dotnetfiddle.net/SooSeu) |
-| `ToAuditEntries(this IEnumerable<XmlAuditEntry> items)` | Return a list of `XmlAuditEntry` converted into `AuditEntry`. | [Try it**](https://dotnetfiddle.net/dVG40P) |
+| `ToAuditEntries(this IEnumerable<XmlAuditEntry> items)` | Return a list of `XmlAuditEntry` converted into `AuditEntry`. | [Try it](https://dotnetfiddle.net/dVG40P) |
 
 ## Limitations
 
