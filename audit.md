@@ -482,12 +482,12 @@ Coming soon...
 ### Extension Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Where<TEntityType>(this DbSet<AuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
-| `Where<TEntityType>(this DbSet<AuditEntry> set, TEntityType entry)` | Gets the audit trail of the specific entry. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
-| `Where<TEntityType>(this DbSet<AuditEntry> set, params object[] keyValues)` | Gets the audit trail of the specific key. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
-| `Where<TEntityType>(this DbSet<XmlAuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `Where<TEntityType>(this DbSet<AuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it](https://dotnetfiddle.net/Lm48H8) |
+| `Where<TEntityType>(this DbSet<AuditEntry> set, TEntityType entry)` | Gets the audit trail of the specific entry. | [Try it](https://dotnetfiddle.net/vSmMSn) |
+| `Where<TEntityType>(this DbSet<AuditEntry> set, params object[] keyValues)` | Gets the audit trail of the specific key. | [Try it](https://dotnetfiddle.net/dbtkiu) |
+| `Where<TEntityType>(this DbSet<XmlAuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it](https://dotnetfiddle.net/zIwUYc) |
 | `ToLog(this AuditEntry entry)` | Returns a string representation of the audit that can be easily saved in a log file. | [Try it**](https://dotnetfiddle.net/SooSeu) |
-| `ToAuditEntries(this IEnumerable<XmlAuditEntry> items)` | Return a list of `XmlAuditEntry` converted into `AuditEntry`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `ToAuditEntries(this IEnumerable<XmlAuditEntry> items)` | Return a list of `XmlAuditEntry` converted into `AuditEntry`. | [Try it**](https://dotnetfiddle.net/dVG40P) |
 
 ## Limitations
 
