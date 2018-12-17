@@ -154,7 +154,7 @@ The `LastAudit` property give you additional information that are not saved such
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/ewsolr)
+[Try it](https://dotnetfiddle.net/qoNEMi)
 
 ### AutoSave Set
 To automatically save the audit trail in your database, you need to specify the `DbSet<>` in which audit entries will be added then saved.
@@ -216,7 +216,7 @@ Your application need to keep an audit trail of all changes in a database. You c
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/b1kwHs)
+[Try it](https://dotnetfiddle.net/8fBiZj)
 
 ### Saving audit trail in a log file
 Your application need to keep an audit trail of all changes in a log file. You can automatically save the audit trail in a log file by specifying an `AutoSaveAction`.
@@ -225,7 +225,7 @@ Your application need to keep an audit trail of all changes in a log file. You c
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/b1kwHs)
+[Try it](https://dotnetfiddle.net/1JvBQ8)
 
 ### Saving audit trail in a different database
 Your application need to keep an audit trail of all changes in a different database. You can automatically save the audit trail in a different database file by specifying an `AutoSaveAction`.
@@ -284,7 +284,7 @@ Your application need to display the audit trail of all changes in an user inter
 ```csharp
 // ...code...
 ```
-[Try it**](https://dotnetfiddle.net/b1kwHs)
+[Try it](https://dotnetfiddle.net/wfoPB1)
 
 ## Documentation
 
@@ -323,12 +323,12 @@ The `AuditManager` allow you to configure how the audit trail will be created, s
 | `ExcludeEntity<TEntityType>(AuditEntryState entryState)` | Excludes from the audit all entities of 'TEntityType' type for the specified entry state. | [Try it](https://dotnetfiddle.net/g5t6FB) |
 | `ExcludeEntity(Func<object, bool> predicate, AuditEntryState entryState)` | Excludes from the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/g22Zlv) |
 | `ExcludeEntity<TEntityType>(Func<TEntityType, bool> predicate, AuditEntryState entryState)` | Excludes from the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/g22Zlv) |
-| `ExcludeProperty()` | Excludes from the audit all properties. Key properties are never excluded.| [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `ExcludeProperty<TEntityType>()` | Excludes from the audit all properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
-| `ExcludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Excludes from the audit selected properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
-| `ExcludePropertyUnchanged()` | Excludes from the audit all properties unchanged. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/2IBfGq) |
-| `ExcludePropertyUnchanged(Func<object, bool> predicate)` | Excludes from the audit all properties unchanged from entities of type 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
-| `ExcludePropertyUnchanged<TEntityType>()` | Excludes from the audit all properties unchanged which satisfy the predicate. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
+| `ExcludeProperty()` | Excludes from the audit all properties. Key properties are never excluded.| [Try it](https://dotnetfiddle.net/2KULLj) |
+| `ExcludeProperty<TEntityType>()` | Excludes from the audit all properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it](https://dotnetfiddle.net/5XTmn4)  |
+| `ExcludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Excludes from the audit selected properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it](https://dotnetfiddle.net/BlIDQY)  |
+| `ExcludePropertyUnchanged()` | Excludes from the audit all properties unchanged. Key properties are never excluded. | [Try it](https://dotnetfiddle.net/9Aw0vq) |
+| `ExcludePropertyUnchanged(Func<object, bool> predicate)` | Excludes from the audit all properties unchanged which satisfy the predicate. Key properties are never excluded. | [Try it](https://dotnetfiddle.net/qhTX5h) |
+| `ExcludePropertyUnchanged<TEntityType>()` | Excludes from the audit all properties unchanged from entities of type 'TEntityType' type. Key properties are never excluded. | [Try it](https://dotnetfiddle.net/EKOk3a) |
 | `IncludeEntity()` | Includes in the the audit all entities. | [Try it](https://dotnetfiddle.net/r0Rq73) |
 | `IncludeEntity<TEntityType>()` | Includes in the audit all entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/rjhUQb) |
 | `IncludeEntity(Func<object, bool> predicate)` | Includes in the audit all entities which satisfy the predicate. | [Try it](https://dotnetfiddle.net/TdqHmK)  |
@@ -336,12 +336,12 @@ The `AuditManager` allow you to configure how the audit trail will be created, s
 | `IncludeEntity<TEntityType>(AuditEntryState entryState)` | Includes in the audit all entities of 'TEntityType' for the specified entry state. | [Try it](https://dotnetfiddle.net/PFY5Pp) |
 | `IncludeEntity(Func<object, bool> predicate, AuditEntryState entryState)` | Includes in the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/yPchrX) |
 | `IncludeEntity<TEntityType>(Func<TEntityType, bool> predicate, AuditEntryState entryState)` | Includes in the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/yPchrX) |
-| `IncludeProperty()` | Includes in the audit all properties. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `IncludeProperty<TEntityType>()` | Includes in the audit all properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
-| `IncludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Includes in the audit selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
-| `IncludePropertyUnchanged()` | Includes to the audit all properties unchanged. | [Try it**](https://dotnetfiddle.net/2IBfGq) |
-| `IncludePropertyUnchanged(Func<object, bool> predicate)` | Includes to the audit all properties unchanged from entities of type 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/lqfF8b) |
-| `IncludePropertyUnchanged<TEntityType>()` | Includes to the audit all properties unchanged which satisfy the predicate. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
+| `IncludeProperty()` | Includes in the audit all properties. | [Try it](https://dotnetfiddle.net/CN9Zq1) |
+| `IncludeProperty<TEntityType>()` | Includes in the audit all properties from entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/e74jy7)  |
+| `IncludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Includes in the audit selected properties from entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/c7YrfX)  |
+| `IncludePropertyUnchanged()` | Includes to the audit all properties unchanged. | [Try it](https://dotnetfiddle.net/RPfZEl) |
+| `IncludePropertyUnchanged(Func<object, bool> predicate)` | Includes to the audit all properties unchanged which satisfy the predicate. | [Try it](https://dotnetfiddle.net/HpJ5mz) |
+| `IncludePropertyUnchanged<TEntityType>()` | Includes to the audit all properties unchanged from entities of type 'TEntityType' type. | [Try it](https://dotnetfiddle.net/bYmNVq) |
 
 ###### Methods (Soft Delete)
 
