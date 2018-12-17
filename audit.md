@@ -394,8 +394,8 @@ This properties values are only accessible via the `LastAudit` property.
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `ParentAudit` | Gets or sets the parent `Audit`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `Entity` | Gets or sets the audited `Entity`. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `Entry` | Gets or sets the audited `ObjectStateEntry`.  | [Try it**](https://dotnetfiddle.net/DP6Del) |
+| `Entity` | Gets or sets the audited `Entity`. | [Try it](https://dotnetfiddle.net/4QeyV2) |
+| `Entry` | Gets or sets the audited `ObjectStateEntry`.  | [Try it](https://dotnetfiddle.net/zvfkd3) |
 
 <details>
   <summary>Database First SQL</summary>
@@ -466,18 +466,18 @@ Coming soon...
 ###### Entity
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it**](https://dotnetfiddle.net/SooSeu) |
-| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
-| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it](https://dotnetfiddle.net/y0wQ4E) |
+| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it](https://dotnetfiddle.net/iwD7qc) |
+| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it](https://dotnetfiddle.net/OPkrkn) |
 
 
 ###### Property
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it](https://dotnetfiddle.net/ePMX3w) |
 | `AuditDisplayFormat(string dataFormatString)` | Attribute to change the Audit property display format. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
-| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
-| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it](https://dotnetfiddle.net/0caNE1) |
+| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it](https://dotnetfiddle.net/1aE47U) |
 
 ### Extension Methods
 | Name | Description | Example |
