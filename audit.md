@@ -1,36 +1,47 @@
 # Audit
 
 ## Description
-The **Audit** feature allows to track and to log change in a database or a file that occurred when saving modification in Entity Framework.
+The **EF Audit** feature allows you to create an audit trail of all changes that occured when saving in Entity Framework. 
+
+The audit trail can be automatically saved in a database or log file.
 
 ```csharp
-public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+public class EntityContext : DbContext
 {
-	// Add your configuration here
-	var audit = this.Configuration.Audit;			
-	audit.AutoSaveSet = this.XmlAuditEntries;
-	audit.IsEnabled = true;
+	public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+	{
+		// Add your configuration here
+		this.Configuration.Audit.AutoSaveSet = this.XmlAuditEntries;
+		this.Configuration.Audit.IsEnabled = true;
+	}
+	
+	public DbSet<Customer> Customers { get; set; }
+	public DbSet<XmlAuditEntry> XmlAuditEntries { get; set; }
 }
 
-// ...code...
-
-context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
-context.Customers.Add(new Customer() { Name = "Customer_B", Description = "Description" });			
-context.Customers.Add(new Customer() { Name = "Customer_C", Description = "Description" });
-
-// Save changes with Audit Enabled
-context.SaveChanges();
-
-// Display Audit Trail
-FiddleHelper.WriteTable("Entity Framework - Audit Trail", context.XmlAuditEntries.Where<Customer>().ToList());
+public static void Main()
+{
+	using (var context = new EntityContext())
+	{
+		context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
+		
+		// Save changes and Audit trail in database
+		context.SaveChanges();
+		
+		// Display Audit trail
+		var auditEntries = context.XmlAuditEntries.ToAuditEntries();
+		FiddleHelper.WriteTable("1 - Audit Entries", auditEntries);
+		FiddleHelper.WriteTable("2 - Audit Properties", auditEntries.SelectMany(x => x.Properties));
+	}
+}
 ```
 [Try it](https://dotnetfiddle.net/1kVazO)
 
-This feature allows to handle various scenario such as:
-- [Save audit trail in database](#save-audit-trail-in-database)
-- [Save audit trail in a file](#save-audit-trail-in-a-file)
-- [Save audit trail in a different context](#save-audit-trail-in-a-different-context)
-- [Display audit trail history](#display-audit-trail-history)
+This feature allows you to handle various scenario such as:
+- [Saving audit trail in a database](#saving-audit-trail-in-a-database)
+- [Saving audit trail in a log file](#saving-audit-trail-in-a-log-file)
+- [Saving audit trail in a different database](#saving-audit-trail-in-a-different-database)
+- [Displaying audit trail history](#displaying-audit-trail-history)
 
 ### What is supported?
 - `SaveChanges()`
@@ -45,47 +56,118 @@ This feature allows to handle various scenario such as:
    - `RelationshipDeleted`
 
 ### Advantage
-- Track what, who, and when a value changed
-- Keep the history (audit trail) of all changes
-- Show to the user the history (audit trail) of all changes
+- Track what, who, and when a value is changed
+- Keep the audit trail of all changes
+- Display the audit trail of all changes
+
+### Community vs Enterprise
+The `Audit` feature is free to use in the **Community** version.
+
+The **Enterprise** version offer performance enhancement by automatically saving audit entries using the `BulkInsert`.
 
 ## Getting Started
 
 ### Enable Auditing
-By default, to not impact performance, the **Audit** feature is disabled. You can activate it by enabling the following configuration `context.Configuration.Audit.IsEnabled = true`.
+By default, not to impact performance, the **Audit** feature is disabled. You can activate it by enabling the following configuration `context.Configuration.Audit.IsEnabled = true`.
 
 #### Always enabled
-You can have the **Audit** feature always activated by enabling it in your context constructor.
+To have the **Audit** feature always enabled, you activate it in your context constructor.
 
 ```csharp
-// ...code...
+public class EntityContext : DbContext
+{
+	public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+	{
+		// Add your configuration here
+		this.Configuration.Audit.AutoSaveSet = this.XmlAuditEntries;
+		this.Configuration.Audit.IsEnabled = true;
+	}
+	
+	public DbSet<Customer> Customers { get; set; }
+	public DbSet<XmlAuditEntry> XmlAuditEntries { get; set; }
+}
+
+public static void Main()
+{
+	using (var context = new EntityContext())
+	{
+		context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
+		
+		// Save changes and Audit trail in database
+		context.SaveChanges();
+		
+		// Display Audit trail
+		var auditEntries = context.XmlAuditEntries.ToAuditEntries();
+		FiddleHelper.WriteTable("1 - Audit Entries", auditEntries);
+		FiddleHelper.WriteTable("2 - Audit Properties", auditEntries.SelectMany(x => x.Properties));
+	}
+}
 ```
 [Try it](https://dotnetfiddle.net/gmlMIz)
 
 #### On Demand enabled
-You can activate the **Audit** feature on demand by enabling it after the context is created.
+To have the **Audit** feature on demand enabled, you activate it after the context is created.
 
 ```csharp
-// ...code...
+public class EntityContext : DbContext
+{
+	public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+	{
+		// Add your configuration here
+		this.Configuration.Audit.AutoSaveSet = this.XmlAuditEntries;
+	}
+	
+	public DbSet<Customer> Customers { get; set; }
+	public DbSet<XmlAuditEntry> XmlAuditEntries { get; set; }
+}
+
+public static void Main()
+{
+	using (var context = new EntityContext())
+	{
+		// You can activate the Audit feature on demand by enabling it after the context is created.
+		context.Configuration.Audit.IsEnabled = true;
+		
+		context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
+		
+		// Save changes and Audit trail in database
+		context.SaveChanges();
+		
+		// Display Audit trail
+		var auditEntries = context.XmlAuditEntries.ToAuditEntries();
+		FiddleHelper.WriteTable("1 - Audit Entries", auditEntries);
+		FiddleHelper.WriteTable("2 - Audit Properties", auditEntries.SelectMany(x => x.Properties));
+	}
+}
 ```
 [Try it](https://dotnetfiddle.net/ewsolr)
 
-### AutoSave Set
-To automatically save changes in your database, you need to specify the set in which audit entries will be added then saved.
+### Last Audit
+The latest audit can be accessed with the `LastAudit` property.
 
-One of those following set must be added to your context:
-- `DbSet<AuditEntry>` (Best for viewing, worse for insert)
-- `DbSet<XmlAuditEntry>`
-- `DbSet<JsonAuditEntry>`
-- `DbSet<IAuditEntry>` (or a class that inherit from `IAuditEntry`)
+The `LastAudit` property give you additional information that are not saved such as:
+- Entity
+- Entry
+- OldValueRaw
+- NewValueRaw
 
 ```csharp
 // ...code...
 ```
-[Try it](https://dotnetfiddle.net/2HLtF4)
+[Try it**](https://dotnetfiddle.net/ewsolr)
+
+### AutoSave Set
+To automatically save the audit trail in your database, you need to specify the `DbSet<>` in which audit entries will be added then saved.
+
+One of those following set must be added to your context:
+
+| Name | Description | Example |
+| :--- | :---------- | :------ |
+| `AuditEntry` | The `AuditEntry` class allow you to save one row per property (Only recommand for `Enterprise` version). The `DbSet<AuditEntry>` and `DbSet<AuditEntryProperty>` must be added to your context. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `XmlAuditEntry` | The `XmlAuditEntry` class allow you to save your properties in an XML format. The `DbSet<XmlAuditEntry>` must be added to your context. | [Try it](https://dotnetfiddle.net/2HLtF4) |
 
 ### AutoSave Action
-To automatically save changes in another context or a file, you need to specify an AutoSaveAction that will always be executed after a save is completed.
+To automatically save the audit trail in another context or a log file, you need to specify an `AutoSaveAction`. This action will be executed after all saves are completed.
 
 ```csharp
 public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
@@ -126,99 +208,78 @@ Console.WriteLine(Log.ToString());
 ```
 [Try it](https://dotnetfiddle.net/s7Zk45)
 
-### Save properties as a table row
-To save properties (one row per property), you need to use the `AuditEntry` and `AuditEntryProperty` class. Only the `AuditEntry` need to be specified in the `AutoSaveSet` audit.
-
-This format is very useful when looking at your properties but **NOT RECOMMENDED**.  Since one insert will be performed for every property, you may severely impact your application performance. We highly recommend using `XmlAuditEntry` or `JsonAuditEntry` instead.
-
-```csharp
-// ...code...
-```
-[Try it](https://dotnetfiddle.net/lQIzmq)
-
-### Save properties as XML
-The `XmlAuditEntry` class allow you to save your properties in an XML format.
-
-```csharp
-// ...code...
-```
-[Try it](https://dotnetfiddle.net/cLLDW7)
-
-### Save properties as Json
-The `JsonAuditEntry` class allow you to save your properties in a Json format.
-
-```csharp
-// ...code...
-```
-[Try it](https://dotnetfiddle.net/AZqGdO)
-
-### Save custom audit
-The `IAuditEntry` interface allows creating a custom audit class by inheriting from the interface. Properties are populated by reflection when the name matches ones that are supported. 
-
-See [supported properties name](#iauditentry).
-
-```csharp
-// ...code...
-```
-[Try it](https://dotnetfiddle.net/lVIW2I)
-
 ## Real Life Scenarios
 
-### Save audit trail in a database
-You have a requirement to track and log all changes in a database.
+### Saving audit trail in a database
+Your application need to keep an audit trail of all changes in a database. You can automatically save the audit trail by specifying an `AutoSaveSet`.
 
 ```csharp
 // ...code...
 ```
 [Try it**](https://dotnetfiddle.net/b1kwHs)
 
-### Save audit trail in a file
-You have a requirement to track and log all changes in a file.
+### Saving audit trail in a log file
+Your application need to keep an audit trail of all changes in a log file. You can automatically save the audit trail in a log file by specifying an `AutoSaveAction`.
+
 
 ```csharp
 // ...code...
 ```
 [Try it**](https://dotnetfiddle.net/b1kwHs)
 
-### Save audit trail in a different context
-You have a requirement to track and log all changes in a different context or database.
+### Saving audit trail in a different database
+Your application need to keep an audit trail of all changes in a different database. You can automatically save the audit trail in a different database file by specifying an `AutoSaveAction`.
 
 ```csharp
-public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+public class EntityContext : DbContext
 {
-	// Add your configuration here
-	var audit = this.Configuration.Audit;			
-	audit.AutoSaveAction = (context, auditing) => {
-		var auditContext = new AuditContext();
-		auditContext.XmlAuditEntries.AddRange(auditing.EntriesXml);
-		auditContext.SaveChanges();
-	};
+	public EntityContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+	{
+		// Add your configuration here			
+		this.Configuration.Audit.AutoSaveAction = (context, auditing) => {
+			var auditContext = new AuditContext();
+			auditContext.XmlAuditEntries.AddRange(auditing.EntriesXml);
+			auditContext.SaveChanges();
+		};
+		
+		this.Configuration.Audit.IsEnabled = true;
+	}
 	
-	audit.IsEnabled = true;
+	public DbSet<Customer> Customers { get; set; }
 }
 
-// ...code...
-
-using (var context = new EntityContext())
+public class AuditContext : DbContext
 {
-	context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
-	context.Customers.Add(new Customer() { Name = "Customer_B", Description = "Description" });			
-	context.Customers.Add(new Customer() { Name = "Customer_C", Description = "Description" });
-	
-	// Save changes with Audit Enabled
-	context.SaveChanges();
+	public AuditContext() : base(FiddleHelper.GetConnectionStringSqlServer())
+	{
+	}
+
+	public DbSet<XmlAuditEntry> XmlAuditEntries { get; set; }
 }
 
-using(var context = new AuditContext())
+public static void Main()
 {
-	// Display Audit Trail
-	FiddleHelper.WriteTable("Entity Framework - Audit Trail", context.XmlAuditEntries.ToList());
+	using (var context = new EntityContext())
+	{
+		context.Customers.Add(new Customer() { Name = "Customer_A", Description = "Description" });
+		
+		// Save changes and Audit trail in database
+		context.SaveChanges();
+	}
+	
+	using(var auditContext = new AuditContext())
+	{
+		// Display Audit trail
+		var auditEntries = auditContext.XmlAuditEntries.ToAuditEntries();
+		FiddleHelper.WriteTable("1 - Audit Entries", auditEntries);
+		FiddleHelper.WriteTable("2 - Audit Properties", auditEntries.SelectMany(x => x.Properties));
+	}
 }
 ```
 [Try it](https://dotnetfiddle.net/JMVLsE)
 
-### Display audit trail history
-You have a requirement to display in the application all the changes that have been made on a specific entity
+### Displaying audit trail history
+Your application need to display the audit trail of all changes in an user interface. If your audit trail is saved in a database, you can retrieve and display audit entries by using your audit `DbSet<>`.
 
 ```csharp
 // ...code...
@@ -229,36 +290,39 @@ You have a requirement to display in the application all the changes that have b
 
 ### AuditManager
 
-The `AuditManager` allow you to configure all options for the **Audit**.
+The `AuditManager` allow you to configure how the audit trail will be created, saved, and retrieved.
 
 ###### Properties
 
 | Name | Description | Default | Example |
 | :--- | :---------- | :-----: | :------ |
-| `IsEnabled` | Gets or sets if the `Audit` feature is enabled. By default, this feature is disabled to not impact the performance. | `false` | [Try it](https://dotnetfiddle.net/4xrM1d) |
-| `AutoSaveAction` | Gets or sets the `AutoSaveAction`. This option is usually used to save audit log in a file or different context. | `null` | [Try it](https://dotnetfiddle.net/YzYyE7) |
-| `AutoSaveSet` | Gets or sets the `AutoSaveSet`. This option is usually used to auto save audit log in a database. | `null` | [Try it](https://dotnetfiddle.net/hXzGVu) |
-| `LastAudit` | Gets the last `Audit` log. This option give you all audit information after a save is performed. | `null` | [Try it](https://dotnetfiddle.net/8ce2Y1) |
+| `IsEnabled` | Gets or sets if the `Audit` feature is enabled. By default, this feature is disabled not to impact the performance. | `false` | [Try it](https://dotnetfiddle.net/4xrM1d) |
+| `AutoSaveAction` | Gets or sets the `AutoSaveAction`. This option is usually used to automatically save the audit trail in a log file or different database. | `null` | [Try it](https://dotnetfiddle.net/YzYyE7) |
+| `AutoSaveSet` | Gets or sets the `AutoSaveSet`. This option is usually used to automatically save the audit trail in a database. | `null` | [Try it](https://dotnetfiddle.net/hXzGVu) |
+| `LastAudit` | Gets the last `Audit` trail. | `null` | [Try it](https://dotnetfiddle.net/8ce2Y1) |
 
 ###### Methods (Display)
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `DisplayDBNullAsNull(bool value)` | Format DBNull.Value as 'null' value. True by default. | [Try it](https://dotnetfiddle.net/8dawtN) |
-| `DisplayFormatValue<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, object, object> formatter)` | Formats value for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `DisplayNameEntity<TEntityType>(Func<TEntityType, string, string>)` formatter | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
-| `DisplayNameProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, string, string> formatter)` | Formats property name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
+| `DisplayFormatType<TEntityType>(Func<TEntityType, string> formatter)` | Format the specified type into a string. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
+| `DisplayEntityName<TEntityType>(string name)` | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
+| `DisplayEntityName<TEntityType>(Func<TEntityType, string, string> formatter)` | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
+| `DisplayPropertyName<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, string name` | Specify the property name for the specifed property of the 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
+| `DisplayPropertyName<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, string, string> formatter)` | Formats property name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
 
 ###### Methods (Include & Exclude)
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `ExcludeEntity()` | Excludes from the audit all entities. | [Try it](https://dotnetfiddle.net/MrWtV4) |
-| `ExcludeEntity<TEntityType>()` | Excludes from the audit all entities of type 'TEntityType' type. | [Try it](https://dotnetfiddle.net/Nes7be) |
+| `ExcludeEntity<TEntityType>()` | Excludes from the audit all entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/Nes7be) |
 | `ExcludeEntity(Func<object, bool> predicate)` | Excludes from the audit all entities which satisfy the predicate. | [Try it](https://dotnetfiddle.net/tWTkaC)  |
 | `ExcludeEntity(AuditEntryState entryState)` | Excludes from the audit all entities for the specified entry state. | [Try it](https://dotnetfiddle.net/vLHfk9)  |
-| `ExcludeEntity<TEntityType>(AuditEntryState entryState)` | Excludes from the audit all entities of type 'TEntityType' type for the specified entry state. | [Try it](https://dotnetfiddle.net/g5t6FB) |
+| `ExcludeEntity<TEntityType>(AuditEntryState entryState)` | Excludes from the audit all entities of 'TEntityType' type for the specified entry state. | [Try it](https://dotnetfiddle.net/g5t6FB) |
 | `ExcludeEntity(Func<object, bool> predicate, AuditEntryState entryState)` | Excludes from the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/g22Zlv) |
+| `ExcludeEntity<TEntityType>(Func<TEntityType, bool> predicate, AuditEntryState entryState)` | Excludes from the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/g22Zlv) |
 | `ExcludeProperty()` | Excludes from the audit all properties. Key properties are never excluded.| [Try it**](https://dotnetfiddle.net/dBOdw2) |
 | `ExcludeProperty<TEntityType>()` | Excludes from the audit all properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
 | `ExcludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Excludes from the audit selected properties from entities of 'TEntityType' type. Key properties are never excluded. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
@@ -271,6 +335,7 @@ The `AuditManager` allow you to configure all options for the **Audit**.
 | `IncludeEntity(AuditEntryState entryState)` | Includes in the the audit all entities for the specified entry state. | [Try it](https://dotnetfiddle.net/YA3Gr0)  |
 | `IncludeEntity<TEntityType>(AuditEntryState entryState)` | Includes in the audit all entities of 'TEntityType' for the specified entry state. | [Try it](https://dotnetfiddle.net/PFY5Pp) |
 | `IncludeEntity(Func<object, bool> predicate, AuditEntryState entryState)` | Includes in the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/yPchrX) |
+| `IncludeEntity<TEntityType>(Func<TEntityType, bool> predicate, AuditEntryState entryState)` | Includes in the audit all entities which satisfy the predicate for the specified entry state. | [Try it](https://dotnetfiddle.net/yPchrX) |
 | `IncludeProperty()` | Includes in the audit all properties. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
 | `IncludeProperty<TEntityType>()` | Includes in the audit all properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
 | `IncludeProperty<TEntityType>(Expression<Func<TEntityType, object>> propertySelector)` | Includes in the audit selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
@@ -309,6 +374,8 @@ The `AuditEntry` class contains information about the entry and a list of `Audit
 
 ###### Properties (Mapped)
 
+This properties values are saved in a database or log file.
+
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `AuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/bn3OpH) |
@@ -322,6 +389,8 @@ The `AuditEntry` class contains information about the entry and a list of `Audit
 
 ###### Properties (Unmapped)
 
+This properties values are only accessible via the `LastAudit` property.
+
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `ParentAudit` | Gets or sets the parent `Audit`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
@@ -332,7 +401,7 @@ The `AuditEntry` class contains information about the entry and a list of `Audit
   <summary>Database First SQL</summary>
 
 ```sql
-SELECT 1
+Coming soon...
 ```
 </details>
 
@@ -363,32 +432,7 @@ The `AuditEntryProperty` contains information about `property`.
   <summary>Database First SQL</summary>
 
 ```sql
-SELECT 1
-```
-</details>
-
-### JsonAuditEntry
-
-The `JsonAuditEntry` class contains information about the `AuditEntry` and all properties saved in a `Json` format.
-
-###### Properties (Mapped)
-
-| Name | Description | Example |
-| :--- | :---------- | :------ |
-| `JsonAuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it](https://dotnetfiddle.net/KNnZ7i) |
-| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it](https://dotnetfiddle.net/u7BXwl) |
-| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it](https://dotnetfiddle.net/iVGV38) |
-| `State` | Gets or sets the `AuditEntryState`. | [Try it](https://dotnetfiddle.net/5Y7rqE) |
-| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it](https://dotnetfiddle.net/Gzu8f0) |
-| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it](https://dotnetfiddle.net/en1Sd1) |
-| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it](https://dotnetfiddle.net/q9GA7E) |
-| `JsonProperties` | Gets or sets audit properties formatted as `Json`. | [Try it](https://dotnetfiddle.net/YMiRH6) |
-
-<details>
-  <summary>Database First SQL</summary>
-
-```sql
-SELECT 1
+Coming soon...
 ```
 </details>
 
@@ -413,29 +457,37 @@ The `XmlAuditEntry` class contains information about the `AuditEntry` and all pr
   <summary>Database First SQL</summary>
 
 ```sql
-SELECT 1
+Coming soon...
 ```
 </details>
 
-### IAuditEntry
+### Data Annotations
 
-The `IAuditEntry` interface doesn't have any properties. However, properties are populated via `reflection` when a property with the same name is implemented.
-
-For example, if the `class` that inherit from `IAuditEntry` has a property named `EntitySetName`, the properties will automatically be populated with the right value.
-
-###### Properties
-
+###### Entity
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `AuditEntryID` | Gets or sets the `AuditEntryID`. | [Try it**](https://dotnetfiddle.net/8z8spq) |
-| `EntitySetName` | Gets or sets the `EntitySet` name. | [Try it**](https://dotnetfiddle.net/DP6Del) |
-| `EntityTypeName` | Gets or sets the `EntityType` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `State` | Gets or sets the `AuditEntryState`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `StateName` | Gets or sets the `AuditEntryState` name. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedBy` | Gets or sets the `AuditEntry` created user. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `CreatedDate` | Gets or sets the `AuditEntry` created date. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `JsonProperties` | Gets or sets audit properties formatted as `Json`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
-| `XmlProperties` | Gets or sets audit properties formatted as `Xml`. | [Try it**](https://dotnetfiddle.net/28AdvH) |
+| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
+| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+
+
+###### Property
+| Name | Description | Example |
+| :--- | :---------- | :------ |
+| `AuditDisplay(string name)` | Attribute to change the Audit entity or property display. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `AuditDisplayFormat(string dataFormatString)` | Attribute to change the Audit property display format. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
+| `AuditExclude` | Attribute to exclude from the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+| `AuditInclude` | Attribute to include in the audit the entity or property. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+
+### Extension Methods
+| Name | Description | Example |
+| :--- | :---------- | :------ |
+| `Where<TEntityType>(this DbSet<AuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `Where<TEntityType>(this DbSet<AuditEntry> set, TEntityType entry)` | Gets the audit trail of the specific entry. | [Try it**](https://dotnetfiddle.net/LT6aSE) |
+| `Where<TEntityType>(this DbSet<AuditEntry> set, params object[] keyValues)` | Gets the audit trail of the specific key. | [Try it**](https://dotnetfiddle.net/Dcldvf) |
+| `Where<TEntityType>(this DbSet<XmlAuditEntry> set)` | Gets the audit trail of all entries entry of entity type `TEntityType`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `ToLog(this AuditEntry entry)` | Returns a string representation of the audit that can be easily saved in a log file. | [Try it**](https://dotnetfiddle.net/SooSeu) |
+| `ToAuditEntries(this IEnumerable<XmlAuditEntry> items)` | Return a list of `XmlAuditEntry` converted into `AuditEntry`. | [Try it**](https://dotnetfiddle.net/SooSeu) |
 
 ## Limitations
 
