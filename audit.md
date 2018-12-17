@@ -359,7 +359,6 @@ The `Audit` class provide information about the audit trail.
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `Entries` | Gets or sets the audit entries. | [Try it](https://dotnetfiddle.net/In5zMB) |
-| `EntriesJson` | Gets the audit entries with properties as Json. | [Try it](https://dotnetfiddle.net/1Pt2Ny) |
 | `EntriesXml` | Gets the audit entries with properties as Xml. | [Try it](https://dotnetfiddle.net/9WKMvp) |
 | `Manager` | Gets the audit manager. | [Try it](https://dotnetfiddle.net/LVU9UD) |
 
