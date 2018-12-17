@@ -306,10 +306,10 @@ The `AuditManager` allow you to configure how the audit trail will be created, s
 | Name | Description | Example |
 | :--- | :---------- | :------ |
 | `DisplayDBNullAsNull(bool value)` | Format DBNull.Value as 'null' value. True by default. | [Try it](https://dotnetfiddle.net/8dawtN) |
-| `DisplayFormatType<TEntityType>(Func<TEntityType, string> formatter)` | Format the specified type into a string. | [Try it**](https://dotnetfiddle.net/dBOdw2) |
-| `DisplayEntityName<TEntityType>(string name)` | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
+| `DisplayFormatType<TEntityType>(Func<TEntityType, string> formatter)` | Format the specified type into a string. | [Try it](https://dotnetfiddle.net/5whaAx) |
+| `DisplayEntityName<TEntityType>(string name)` | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it](https://dotnetfiddle.net/xu4yPs)  |
 | `DisplayEntityName<TEntityType>(Func<TEntityType, string, string> formatter)` | Formats entity name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/q7T7nl)  |
-| `DisplayPropertyName<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, string name` | Specify the property name for the specifed property of the 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
+| `DisplayPropertyName<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, string name)` | Specify the property name for the specifed property of the 'TEntityType' type. | [Try it](https://dotnetfiddle.net/AxkTW3)  |
 | `DisplayPropertyName<TEntityType>(Expression<Func<TEntityType, object>> propertySelector, Func<TEntityType, string, string> formatter)` | Formats property name for selected properties from entities of 'TEntityType' type. | [Try it**](https://dotnetfiddle.net/Zoric3)  |
 
 ###### Methods (Include & Exclude)
@@ -362,11 +362,6 @@ The `Audit` class provide information about the audit trail.
 | `EntriesJson` | Gets the audit entries with properties as Json. | [Try it](https://dotnetfiddle.net/1Pt2Ny) |
 | `EntriesXml` | Gets the audit entries with properties as Xml. | [Try it](https://dotnetfiddle.net/9WKMvp) |
 | `Manager` | Gets the audit manager. | [Try it](https://dotnetfiddle.net/LVU9UD) |
-
-###### Methods
-| Name | Description | Example |
-| :--- | :---------- | :------ |
-| `EntriesAs<T>() where T : IAuditEntry` | Gets customs audit entries that implement the interface `IAuditEntry` | [Try it**](https://dotnetfiddle.net/lqfF8b) |
 
 ### AuditEntry
 
