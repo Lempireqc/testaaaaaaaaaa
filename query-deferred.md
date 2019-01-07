@@ -15,25 +15,25 @@ However, some features like **Query Cache** and **Query Future** cannot be used 
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `DeferredAggregate` | QueryDeferred extension method. Applies an accumulator function over a sequence. | [Coming soon](#) |
-| `DeferredAll` | | [Coming soon](#) |
-| `DeferredAny` | | [Coming soon](#) |
-| `DeferredAverage` | | [Coming soon](#) |
-| `DeferredContains` | | [Coming soon](#) |
-| `DeferredCount` | | [Coming soon](#) |
-| `DeferredElementAt` | | [Coming soon](#) |
-| `DeferredElementAtOrDefault` | | [Coming soon](#) |
-| `DeferredFirst` | | [Coming soon](#) |
-| `DeferredFirstOrDefault` | | [Coming soon](#) |
-| `DeferredLast` | | [Coming soon](#) |
-| `DeferredLastOrDefault` | | [Coming soon](#) |
-| `DeferredLongCount` | | [Coming soon](#) |
-| `DeferredMax` | | [Coming soon](#) |
-| `DeferredMin` | | [Coming soon](#) |
-| `DeferredSequenceEqual` | | [Coming soon](#) |
-| `DeferredSingle` | | [Coming soon](#) |
-| `DeferredSingleOrDefault` | | [Coming soon](#) |
-| `DeferredSum` | | [Coming soon](#) |
+| `DeferredAggregate` | QueryDeferred extension method. Applies an accumulator function over a sequence. | [Try it](#) |
+| `DeferredAll` | | [Try it](#) |
+| `DeferredAny` | | [Try it](#) |
+| `DeferredAverage` | | [Try it](#) |
+| `DeferredContains` | | [Try it](#) |
+| `DeferredCount` | | [Try it](#) |
+| `DeferredElementAt` | | [Try it](#) |
+| `DeferredElementAtOrDefault` | | [Try it](#) |
+| `DeferredFirst` | | [Try it](#) |
+| `DeferredFirstOrDefault` | | [Try it](#) |
+| `DeferredLast` | | [Try it](#) |
+| `DeferredLastOrDefault` | | [Try it](#) |
+| `DeferredLongCount` | | [Try it](#) |
+| `DeferredMax` | | [Try it](#) |
+| `DeferredMin` | | [Try it](#) |
+| `DeferredSequenceEqual` | | [Try it](#) |
+| `DeferredSingle` | | [Try it](#) |
+| `DeferredSingleOrDefault` | | [Try it](#) |
+| `DeferredSum` | | [Try it](#) |
 
 ## Real Life Scenarios
 ### Query Cache
@@ -42,7 +42,7 @@ You want to cache the customer count (immediate method) with the [Query Cache](q
 ```csharp
 // ... Coming soon...
 ```
-[Coming soon](#)
+[Try it](#)
 
 ### Query Future
 You want to return the customer count (immediate method) with a paged list using the [Query Future](query-future) feature. You can defer the customer count with the `DeferredCount` method.
@@ -50,7 +50,7 @@ You want to return the customer count (immediate method) with a paged list using
 ```csharp
 // ... Coming soon...
 ```
-[Coming soon](#)
+[Try it](#)
 
 ## Documnentation
 
@@ -59,8 +59,8 @@ You want to return the customer count (immediate method) with a paged list using
 ###### Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Execute()` | Execute the deferred expression and return the result. | [Coming soon](#) |
-| `ExecuteAsync()` | Execute asynchrounously the deferred expression and return the result. | [Coming soon](#) |
-| `ExecuteAsync(CancellationToken cancellationToken)` | Execute asynchrounously the deferred expression and return the result.  | [Coming soon](#)  |
+| `Execute()` | Execute the deferred expression and return the result. | [Try it](#) |
+| `ExecuteAsync()` | Execute asynchrounously the deferred expression and return the result. | [Try it](#) |
+| `ExecuteAsync(CancellationToken cancellationToken)` | Execute asynchrounously the deferred expression and return the result.  | [Try it](#)  |
 
 
