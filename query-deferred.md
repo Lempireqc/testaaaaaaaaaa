@@ -43,14 +43,14 @@ You want to cache the customer count (immediate method) with the [Query Cache](q
 You want to return the customer count (immediate method) with a paged list using the [Query Future](query-future) feature. You can defer the customer count with the `DeferredCount` method.
 
 ```csharp
-      // Not do Select
-			var futurValue = context.Customers.DeferredCount().FutureValue();
-							
-			context.Customers.Add(new Customer() { Name = "Customer_D", Description = "Description"});
-			context.SaveChanges();	
-			
-			// SELECT COUNT(1) FROM Customers
-			Console.WriteLine("Count Customer is : " +   futurValue.Value);	
+// Not do Select
+var futurValue = context.Customers.DeferredCount().FutureValue();
+
+context.Customers.Add(new Customer() { Name = "Customer_D", Description = "Description"});
+context.SaveChanges();	
+
+// SELECT COUNT(1) FROM Customers
+Console.WriteLine("Count Customer is : " +   futurValue.Value);	
 ```
 [Try it](https://dotnetfiddle.net/OshIRK)
 
