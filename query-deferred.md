@@ -15,8 +15,6 @@ However, some features like **Query Cache** and **Query Future** cannot be used 
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `DeferredAggregate` | QueryDeferred extension method. Applies an accumulator function over a sequence. | [Try it](#) |
-| `DeferredAll` | | [Try it](#) |
 | `DeferredAny` | | [Try it](#) |
 | `DeferredAverage` | | [Try it](#) |
 | `DeferredContains` | | [Try it](#) |
@@ -30,7 +28,6 @@ However, some features like **Query Cache** and **Query Future** cannot be used 
 | `DeferredLongCount` | | [Try it](#) |
 | `DeferredMax` | | [Try it](#) |
 | `DeferredMin` | | [Try it](#) |
-| `DeferredSequenceEqual` | | [Try it](#) |
 | `DeferredSingle` | | [Try it](#) |
 | `DeferredSingleOrDefault` | | [Try it](#) |
 | `DeferredSum` | | [Try it](#) |
