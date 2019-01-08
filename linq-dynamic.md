@@ -14,7 +14,7 @@ All LINQ predicate methods are supported. A string expression which return a Boo
 | :--- | :---------- | :------ |
 | `SkipWhile` | | [Coming soon](#) |
 | `TakeWhile` | | [Coming soon](#) |
-| `Where` | | [Coming soon](#) |
+| `Where` | | [Coming soon](https://dotnetfiddle.net/QhVfRW) |
 
 ###### Immediate Methods
 | Name | Description | Example |
@@ -24,8 +24,6 @@ All LINQ predicate methods are supported. A string expression which return a Boo
 | `Count` | | [Coming soon](#) |
 | `First` | | [Coming soon](#) |
 | `FirstOrDefault` | | [Coming soon](#) |
-| `Last` | | [Coming soon](#) |
-| `LastOrDefault` | | [Coming soon](#) |
 | `LongCount` | | [Coming soon](#) |
 | `Single` | | [Coming soon](#) |
 | `SingleOrDefault` | | [Coming soon](#) |
