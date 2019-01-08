@@ -23,8 +23,7 @@ However, some features like **Query Cache** and **Query Future** cannot be used 
 | `DeferredFirstOrDefault` | QueryDeferred extension method. Returns the first element of a sequence, or a default value if the sequence contains no elements. | [Try it](https://dotnetfiddle.net/MEM6Ub) |
 | `DeferredLongCount` | QueryDeferred extension method. Returns an Int64 that represents how many elements in a sequence satisfy a condition. | [Try it](https://dotnetfiddle.net/0wPWSF) |
 | `DeferredMax` | QueryDeferred extension method. Returns the maximum value in a sequence | [Try it](https://dotnetfiddle.net/9GljhW) |
-| `DeferredMin` | QueryDeferred extension method. 	
-Returns the minimum value in a sequence | [Try it](https://dotnetfiddle.net/8h3Fjt) |
+| `DeferredMin` | QueryDeferred extension method. Returns the minimum value in a sequence | [Try it](https://dotnetfiddle.net/8h3Fjt) |
 | `DeferredSingle` | QueryDeferred extension method. Returns the minimum value in a sequence of Single values. | [Try it](https://dotnetfiddle.net/YmhLeU) |
 | `DeferredSingleOrDefault` | QueryDeferred extension method. Returns the minimum value in a sequence of nullable Single values. | [Try it](https://dotnetfiddle.net/8k6V4Q) |
 | `DeferredSum` | QueryDeferred extension method. Computes the sum of a sequence | [Try it](https://dotnetfiddle.net/ugoMmG) |
