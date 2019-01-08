@@ -15,7 +15,7 @@ However, some features like **Query Cache** and **Query Future** cannot be used 
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `DeferredAll` | QueryDeferred extension method. Determines whether all elements of a sequence satisfy a condition. | [Try i](https://dotnetfiddle.net/R4nKJc) |
+| `DeferredAll` | QueryDeferred extension method. Determines whether all elements of a sequence satisfy a condition. | [Try it](https://dotnetfiddle.net/R4nKJc) |
 | `DeferredAny` | QueryDeferred extension method. Determines whether a sequence contains any elements. | [Try it](https://dotnetfiddle.net/Nnv3fB) |
 | `DeferredAverage` | QueryDeferred extension method. Computes the average of a sequence of Single values. | [Try it](https://dotnetfiddle.net/KUPPPf) |
 | `DeferredCount` | QueryDeferred extension method. Returns the number of elements in a sequence. | [Try it](https://dotnetfiddle.net/GAEt8F) |
