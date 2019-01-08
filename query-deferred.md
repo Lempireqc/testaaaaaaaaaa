@@ -59,8 +59,8 @@ Console.WriteLine("Count Customer is : " +   futurValue.Value);
 ###### Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Execute()` | Execute the deferred expression and return the result. | [Try it](#) |
-| `ExecuteAsync()` | Execute asynchrounously the deferred expression and return the result. | [Try it](#) |
-| `ExecuteAsync(CancellationToken cancellationToken)` | Execute asynchrounously the deferred expression and return the result.  | [Try it](#)  |
+| `Execute()` | Execute the deferred expression and return the result. | [Try it](https://dotnetfiddle.net/byuQpD) |
+| `ExecuteAsync()` | Execute asynchrounously the deferred expression and return the result. | [Coming soon](#) |
+| `ExecuteAsync(CancellationToken cancellationToken)` | Execute asynchrounously the deferred expression and return the result.  | [Coming soon](#)  |
 
 
