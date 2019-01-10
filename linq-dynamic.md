@@ -39,12 +39,12 @@ All LINQ selector and order are supported. Most of them require the "Dynamic" su
 ###### Deferred  Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `OrderByDescendingDynamic` | | [Try it](#) |
-| `OrderByDynamic` | | [Try it](#) |
-| `SelectDynamic` | | [Try it](#) |
+| `OrderByDescendingDynamic` | | [Try it](https://dotnetfiddle.net/doNrVQ) |
+| `OrderByDynamic` | | [Try it](https://dotnetfiddle.net/rzKycR) |
+| `SelectDynamic` | | [Try it](https://dotnetfiddle.net/YE83om) |
 | `SelectManyDynamic` | | [Try it](#) |
-| `ThenByDescendingDynamic` | | [Try it](#) |
-| `ThenByDynamic` | | [Try it](#) |
+| `ThenByDescendingDynamic` | | [Try it](https://dotnetfiddle.net/8FxroD) |
+| `ThenByDynamic` | | [Try it](https://dotnetfiddle.net/pVCcRf) |
 
 ```csharp
 var list = context.Customers.OrderByDescendingDynamic(x => "x.Name").ToList();
@@ -58,8 +58,8 @@ The Execute method is the LINQ Dynamic ultimate methods which let you evaluate a
 ###### Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Execute` | | [Try it](#) |
-| `Execute<TResult>` | | [Try it](#) |
+| `Execute` | | [Try it](https://dotnetfiddle.net/z1jIkv) |
+| `Execute<TResult>` | | [Try it](https://dotnetfiddle.net/jgOyFi) |
 
 ```csharp
 var list = context.Customers.Execute<IEnumerable<Customer>>("Where(x => x.IsActive == true)").ToList();
