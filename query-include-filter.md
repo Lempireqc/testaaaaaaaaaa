@@ -47,7 +47,8 @@ var context = new EntityContext()
 // LOAD customers and related active invoices and InvoiceItems[NEEDGOODWORD!!!].
 var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted))
 				.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)
-							   .Select(y => y.InvoiceItems.Where(z => !z.IsSoftDeleted)))
+							   .Select(y => y.InvoiceItems
+							   		.Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
 [Try it](https://dotnetfiddle.net/v6AgLP)
@@ -61,16 +62,16 @@ If you need to include without a filter, you can still use the `IncludeFilter` m
 
 ```csharp
 // using Z.EntityFramework.Plus; // Don't forget to include this.
-var ctx = new EntitiesContext();
+var context = new EntityContext()
 
-// LOAD blogs and related active posts and comments.
-var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted))
-                     .IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted)
-                                                .Select(y => y.Comments
-                                                              .Where(z => !z.IsSoftDeleted)))
+// LOAD customers and related active invoices and InvoiceItems[NEEDGOODWORD!!!].
+var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted))
+				.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)
+							   .Select(y => y.InvoiceItems
+							   		.Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
-[Try it](#)
+[Try it](https://dotnetfiddle.net/C4qVc1)
 
 > The limitation to chain only with `IncludeFilter` method will be removed when the feature will be integrated into **Entity Framework Classic**.
 
@@ -81,16 +82,16 @@ You need to load a blog and include related posts and comments, but only related
 
 ```csharp
 // using Z.EntityFramework.Plus; // Don't forget to include this.
-var ctx = new EntitiesContext();
+var context = new EntityContext()
 
-// LOAD blogs and related active posts and comments.
-var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted))
-                     .IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted)
-                                                .Select(y => y.Comments
-                                                              .Where(z => !z.IsSoftDeleted)))
+// LOAD customers and related active invoices and InvoiceItems[NEEDGOODWORD!!!].
+var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted))
+				.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)
+							   .Select(y => y.InvoiceItems
+							   		.Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
-[Try it](#)
+[Try it](https://dotnetfiddle.net/AmqKb0)
 
 ### Include with security access
 You need to load a post and include related comments, but only related comments the current role have access.
