@@ -23,6 +23,7 @@ All LINQ predicate methods are supported. A string expression which return a Boo
 | `First` | | [Try it](https://dotnetfiddle.net/CfxUKL) |
 | `FirstOrDefault` | | [Try it](https://dotnetfiddle.net/UX3Ymb) |
 | `LongCount` | | [Try it](https://dotnetfiddle.net/4xrM1d) |
+| `SelectMany` | | [Try it](https://dotnetfiddle.net/KLF5e7) |
 | `Single` | | [Try it](https://dotnetfiddle.net/onW4hW) |
 | `SingleOrDefault` | | [Try it](https://dotnetfiddle.net/nU97uw) |
 
@@ -42,7 +43,6 @@ All LINQ selector and order are supported. Most of them require the "Dynamic" su
 | `OrderByDescendingDynamic` | | [Try it](https://dotnetfiddle.net/doNrVQ) |
 | `OrderByDynamic` | | [Try it](https://dotnetfiddle.net/rzKycR) |
 | `SelectDynamic` | | [Try it](https://dotnetfiddle.net/YE83om) |
-| `SelectManyDynamic` | | [Try it](#) |
 | `ThenByDescendingDynamic` | | [Try it](https://dotnetfiddle.net/8FxroD) |
 | `ThenByDynamic` | | [Try it](https://dotnetfiddle.net/pVCcRf) |
 
