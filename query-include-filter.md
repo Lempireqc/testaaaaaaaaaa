@@ -7,9 +7,9 @@ The **EF Query Include Filter** feature let you to filter related entities that 
 For example, you want to load a blog and include related posts, but only related posts that are not soft deleted.
 
 ```csharp
-var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted)).ToList();
+var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)).ToList();
 ```
-[Coming soon](#)
+[Try it](https://dotnetfiddle.net/pesV1x)
 
 This feature allows you to handle various scenario such as:
 - [Exclude soft deleted entities](#exclude-soft-deleted-entities)
@@ -28,12 +28,12 @@ To filter with the `IncludeFilter` method, you need to specify the path as you d
 
 ```csharp
 // using Z.EntityFramework.Plus; // Don't forget to include this.
-var ctx = new EntitiesContext();
+var context = new EntityContext()
 
-// LOAD blogs and related active posts.
-var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted)).ToList();
+// LOAD customers and related active invoices.
+var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)).ToList();
 ```
-[Coming soon](#)
+[Try it](https://dotnetfiddle.net/H85eO9)
 
 ### Include multiple levels
 To filter multiple levels, you need to use the `IncludeFilter` on every level, not only the last one, unlike the `Include` method.
@@ -42,15 +42,15 @@ In this example, we performed an `IncludeFilter` on the `Post` level, and one on
 
 ```csharp
 // using Z.EntityFramework.Plus; // Don't forget to include this.
-var ctx = new EntitiesContext();
+var context = new EntityContext()
 
-// LOAD blogs and related active posts and comments.
-var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted))
-                     .IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted)
-                                                .Select(y => y.Comments.Where(z => !z.IsSoftDeleted)))
+// LOAD customers and related active invoices and InvoiceItems[NEEDGOODWORD!!!].
+var customers = context.Customers.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted))
+				.IncludeFilter(x => x.Invoices.Where(y => !y.IsSoftDeleted)
+							   .Select(y => y.InvoiceItems.Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
-[Coming soon](#)
+[Try it](https://dotnetfiddle.net/v6AgLP)
 
 > The limitations to include every level will be removed when the feature will be integrated into **Entity Framework Classic**.
 
@@ -70,7 +70,7 @@ var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted))
                                                               .Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
-[Coming soon](#)
+[Try it](#)
 
 > The limitation to chain only with `IncludeFilter` method will be removed when the feature will be integrated into **Entity Framework Classic**.
 
@@ -90,7 +90,7 @@ var blogs = ctx.Blogs.IncludeFilter(x => x.Posts.Where(y => !y.IsSoftDeleted))
                                                               .Where(z => !z.IsSoftDeleted)))
                      .ToList();
 ```
-[Coming soon](#)
+[Try it](#)
 
 ### Include with security access
 You need to load a post and include related comments, but only related comments the current role have access.
@@ -105,14 +105,14 @@ var ctx = new EntitiesContext();
 var posts= ctx.Posts.IncludeFilter(x => x.Comments.Where(y => y.RoleID >= myRoleID))
                     .ToList();
 ```
-[Coming soon](#)
+[Try it](#)
 
 ### Include paginated entities
 You need to load a post and include related comments, but only the first 10 related comments sorted by views.
 
 ```csharp
 ```
-[Coming soon](#)
+[Try it](#)
 
 ## Documentation
 
@@ -121,8 +121,8 @@ You need to load a post and include related comments, but only the first 10 rela
 ###### Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, IEnumerable<TRelatedEntity>>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a collection of related entities. | [Coming soon](#) |
-| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, TRelatedEntity>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a single related entities. | [Coming soon](#) |
+| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, IEnumerable<TRelatedEntity>>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a collection of related entities. | [Try it](#) |
+| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, TRelatedEntity>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a single related entities. | [Try it](#) |
 
 ## Limitations
 
@@ -151,6 +151,6 @@ ctx.Posts.ToList();
 ctx.Posts.IncludeFilter(q => q.Comments.Take(1)).ToList();
 ```
 
-[Coming soon](#)
+[Try it](#)
 
 In this case, we recommend to create and load entities from a new `DbContext`.
