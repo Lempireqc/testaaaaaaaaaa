@@ -105,15 +105,18 @@ var ctx = new EntitiesContext();
 // LOAD posts and available comments for the role level.
 var posts= ctx.Posts.IncludeFilter(x => x.Comments.Where(y => y.RoleID >= myRoleID))
                     .ToList();
+		    
+[GO SEE FIDDLE, for said like or not?!]
 ```
-[Try it](#)
+[Try it](https://dotnetfiddle.net/gRbbzY)
 
 ### Include paginated entities
 You need to load a post and include related comments, but only the first 10 related comments sorted by views.
 
 ```csharp
+context.Invoices.IncludeFilter(x => x.InvoiceItems.Take(10));
 ```
-[Try it](#)
+[Try it](https://dotnetfiddle.net/wFBdRt)
 
 ## Documentation
 
@@ -141,17 +144,17 @@ If an entity is already part of the `ChangeTracker` (the context), it's impossib
 
 ```csharp
 // using Z.EntityFramework.Plus; // Don't forget to include this.
-var ctx = new EntitiesContext();
+var context = new EntityContext()
 
-ctx.Comments.ToList();
+context.Invoices.ToList();
 
-// The posts automatically contain all comments even without using the "Include" method.
-ctx.Posts.ToList();
+// The Invoices automatically contain all InvoiceItems [NEEDGOODWORD!!!] even without using the "Include" method.
+context.InvoiceItems.ToList();
 
-// Trying to load only one comment will obviously not work either.
-ctx.Posts.IncludeFilter(q => q.Comments.Take(1)).ToList();
+// Trying to load only one InvoiceItems [NEEDGOODWORD!!!] will obviously not work either.
+context.Invoices.IncludeFilter(x => x.InvoiceItems.Take(1)).ToList();
 ```
 
-[Try it](#)
+[Try it](https://dotnetfiddle.net/t2FLxe)
 
 In this case, we recommend to create and load entities from a new `DbContext`.
