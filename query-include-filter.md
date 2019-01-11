@@ -114,6 +114,9 @@ var posts= ctx.Posts.IncludeFilter(x => x.Comments.Where(y => y.RoleID >= myRole
 You need to load a post and include related comments, but only the first 10 related comments sorted by views.
 
 ```csharp
+// using Z.EntityFramework.Plus; // Don't forget to include this.
+var context = new EntityContext()
+
 context.Invoices.IncludeFilter(x => x.InvoiceItems.Take(10));
 ```
 [Try it](https://dotnetfiddle.net/wFBdRt)
@@ -125,8 +128,8 @@ context.Invoices.IncludeFilter(x => x.InvoiceItems.Take(10));
 ###### Methods
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, IEnumerable<TRelatedEntity>>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a collection of related entities. | [Try it](#) |
-| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, TRelatedEntity>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a single related entities. | [Try it](#) |
+| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, IEnumerable<TRelatedEntity>>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a collection of related entities. | [Try it](https://dotnetfiddle.net/72nPzP) |
+| `IncludeFilter<TEntityType, TRelatedEntity>(this IQueryable<TEntityType> query, Expression<Func<TEntityType, TRelatedEntity>> filter)` | An `IQueryable<TEntityType>` extension method that includes and filter a single related entities. | [Try it](https://dotnetfiddle.net/BpUD4q) |
 
 ## Limitations
 
